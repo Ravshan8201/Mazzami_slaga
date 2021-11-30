@@ -196,13 +196,15 @@ def next_func(update, context):
         num_ = cur.execute(select_num.format(user_id)).fetchall()
         dom = cur.execute(select_pro.format(user_id)).fetchall()
         promodod = cur.execute(select_pro.format(user_id)).fetchall()
-        podarka = cur.execute(name_uz_id.format(user_list[0])).fetchall()
-
+        connect.commit()
+        promodod = promodod[0][0]
+        connect.commit()
+        podarka = cur.execute(name_uz_id.format(promodod)).fetchall()
         connect.commit()
         name_ = name_[0][0]
         num_ = num_[0][0]
         dom = dom[0][0]
-        promodod = promodod[0][0]
+
         print(promodod)
         podarka = podarka[0][0]
         connect.commit()
