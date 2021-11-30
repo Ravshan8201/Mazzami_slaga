@@ -197,7 +197,8 @@ def next_func(update, context):
         num_ = cur.execute(select_num.format(user_id)).fetchall()
         dom = cur.execute(select_pro.format(user_id)).fetchall()
         promodod = cur.execute(promo_id.format(user_list[0])).fetchall()
-        podarka = cur.execute(name_ru_id.format(user_list[0])).fetchall()
+        podarka = cur.execute(name_uz_id.format(user_list[0])).fetchall()
+        
 
         connect.commit()
         name_ = name_[0][0]
@@ -206,17 +207,18 @@ def next_func(update, context):
         promodod = promodod[0][0]
         print(promodod)
         podarka = podarka[0][0]
+        connect.commit()
         context.bot.send_message(text=dct[lang_][17], chat_id=user_id)
         context.bot.send_message(text=dct[lang_][12], chat_id=user_id)
 
-        context.bot.send_message(chat_id= 2071126215, text='Ismi: {}\nTelefon nomeri: {}\nManzil: {}\nPromokod: {}\n Podarka: {}'.format(name_,num_,dom,promodod,vvv[0]))
+        context.bot.send_message(chat_id= 2071126215, text='Ismi: {}\nTelefon nomeri: {}\nManzil: {}\nPromokod: {}\n Podarka: {}'.format(name_,num_,dom,promodod, podarka))
         cur.execute(upd_dom.format('{}', user_id).format(message))
         connect.commit()
         cur.execute('''DELETE FROM Promo_list WHERE Promo =='{}' '''.format(delete[0]))
         print(delete[0])
         connect.commit()
         delete.clear()
-        vvv.clear()
+        
 
 
 
