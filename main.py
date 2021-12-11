@@ -1,7 +1,7 @@
 from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 from func import *
 from cons import *
-upd = Updater(token=TOKEN, workers=4)
+upd = Updater(token=TOKE, workers=4)
 dis = upd.dispatcher
 dis.add_handler(CommandHandler(command='start', callback=start))
 dis.add_handler(CallbackQueryHandler(pattern='admin', callback=admin))
